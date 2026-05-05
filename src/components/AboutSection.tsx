@@ -74,6 +74,7 @@ export function AboutSection() {
             ))}
           </div>
 
+  {location.pathname !== "/about" && (
           <Link to="/about" className="mt-8 inline-flex">
             <motion.span
               whileHover={{ scale: 1.04, gap: "1rem" }}
@@ -82,6 +83,7 @@ export function AboutSection() {
               Learn More About Us <Check className="w-4 h-4" />
             </motion.span>
           </Link>
+  )}
         </motion.div>
       </div>
     </section>
