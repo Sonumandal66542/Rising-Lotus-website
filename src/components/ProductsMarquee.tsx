@@ -4,7 +4,7 @@ import { SectionHeading } from "./SectionHeading";
 
 const products = [
   { title: "Renters Insurance", desc: "Cover your personal property and liability as a tenant.", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&q=80", to: "/products/renters" as const },
-  { title: "Flood Insurance", desc: "Protection against water damage not covered by standard policies.", img: "https://images.unsplash.com/photo-1527011045973-e380e2f5b801?w=500&q=80", to: "/products/flood" as const },
+  { title: "Flood Insurance", desc: "Protection against water damage not covered by standard policies.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxSbeKyUgAz2eztpChS3YHMev_gLubwSNvhg&s", to: "/products/flood" as const },
   { title: "Motorcycle Insurance", desc: "Stay safe on two wheels with tailored coverage.", img: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=500&q=80", to: "/products/motorcycle" as const },
   { title: "RV Insurance", desc: "Comprehensive coverage for your home on wheels.", img: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=500&q=80", to: "/products/rv" as const },
   { title: "Workers Comp", desc: "Benefits to employees who suffer work-related injuries.", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80", to: "/products/workers-comp" as const },
