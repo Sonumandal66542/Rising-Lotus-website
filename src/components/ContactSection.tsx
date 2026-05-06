@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SectionHeading } from "./SectionHeading";
+const BASE_URL = import.meta.env.VITE_BASE_URL
+console.log(BASE_URL,'BASE_URL')
 
 const info = [
   { icon: MapPin, t: "Office Location", v: ["123 Insurance Ave, Suite 100", "New York, NY 10001"] },
@@ -11,6 +13,7 @@ const info = [
 ];
 
 export function ContactSection() {
+  
   const [sent, setSent] = useState(false);
    const [formData, setFormData] = useState({
         firstname: '',
@@ -36,7 +39,7 @@ export function ContactSection() {
         setError('');
         setSuccess(false);
         try {
-            const response = await fetch('http://localhost:8000/api/v1/contact-user', {
+            const response = await fetch(`${BASE_URL}/api/v1/contact-user`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
@@ -153,7 +156,7 @@ export function ContactSection() {
     setSuccess(false);
 
     try {
-      const response = await fetch('http://localhost:8000/api/v1/contact-user', {
+      const response = await fetch(`${BASE_URL}/api/v1/contact-user`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -187,7 +190,7 @@ export function ContactSection() {
     { l: "First Name",     p: "John",            k: "firstname",    t: "text"  },
     { l: "Last Name",      p: "Doe",             k: "lastname",     t: "text"  },
     { l: "Email Address",  p: "you@email.com",   k: "email",        t: "email" },
-    { l: "Phone Number",   p: "(555) 555-5555",  k: "phonenumber",  t: "text"  },
+    { l: "Phone Number",   p: "(555) 555-5555",  k: "phonenumber",  t: "Number"  },
   ].map((f) => (
     <label key={f.l} className="block">
       <span className="text-xs font-semibold text-navy/80 mb-1.5 block">{f.l}</span>
