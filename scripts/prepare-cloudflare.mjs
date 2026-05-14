@@ -1,4 +1,4 @@
-import { existsSync, rmSync, renameSync, copyFileSync, mkdirSync } from 'fs';
+import { existsSync, rmSync, renameSync, copyFileSync, mkdirSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 
 const root = process.cwd();
@@ -35,5 +35,18 @@ if (existsSync(distServer) && !existsSync(workerDir)) {
   }
   console.log('✓ Moved dist/server → dist/client/_worker.js');
 }
+
+// Create _routes.json so /assets/* is served directly as static files
+// instead of going through the SSR worker (which caused 404s)
+const routesJson = {
+  version: 1,
+  include: ['/*'],
+  exclude: ['/assets/*']
+};
+writeFileSync(
+  resolve(distClient, '_routes.json'),
+  JSON.stringify(routesJson, null, 2)
+);
+console.log('✓ Created _routes.json (assets served statically)');
 
 console.log('✓ Cloudflare Pages build ready!');
