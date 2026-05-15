@@ -33,30 +33,6 @@ export function ContactSection() {
     setFormData(prev => ({ ...prev, [key]: value }));
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    setSuccess(false);
-    try {
-     const response = await fetch(
-  `${BASE_URL}/api/v1/contact-user?x-vercel-set-bypass-cookie=true&x-vercel-protection-bypass=${bypassToken}`,
-  {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
-  }
-);
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Something went wrong. Please try again.');
-      setSuccess(true);
-      setFormData({ firstname: '', lastname: '', phonenumber: '', email: '', message: '' });
-    } catch (err) {
-      setError(e.message);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
     if (success) { const t = setTimeout(() => setSuccess(false), 5000); return () => clearTimeout(t); }
@@ -160,7 +136,7 @@ export function ContactSection() {
 
               try {
              const response = await fetch(
-  `${BASE_URL}/api/v1/contact-user?x-vercel-set-bypass-cookie=true&x-vercel-protection-bypass=${bypassToken}`,
+  `${BASE_URL}/api/v1/contact-user?x-vercel-protection-bypass=${bypassToken}`,
   {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
