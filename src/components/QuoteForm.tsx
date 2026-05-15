@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { useState } from "react";
+const BASE_URL = import.meta.env.VITE_BASE_URL
+const bypassToken = import.meta.env.VITE_BYPASS_TOKEN;
 
 const types = ["Auto Insurance", "Home Insurance", "Business Insurance"];
 
@@ -48,7 +50,7 @@ export function QuoteForm() {
             setError('');
 
             try {
-              const response = await fetch('http://localhost:8000/api/v1/quote', {
+              const response = await fetch(`${BASE_URL}/api/v1/quote?x-vercel-protection-bypass=${bypassToken}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
